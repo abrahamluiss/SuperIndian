@@ -18,17 +18,16 @@ public class BulletController : MonoBehaviour
         Debug.Log("Sali bala");
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
     private void FixedUpdate() {
         m_Rigidbody.velocity = stepVector;
     }
 
-    void OnTriggerEnter(Collider other)
+    void OnTriggerEnter2D(Collider2D other)
     {
-        
+        if(other.gameObject.name.Equals("tree")){
+            TreeController ctr = other.gameObject.GetComponent<TreeController>();
+            if(ctr != null) ctr.RecibirDisparo();
+            Destroy(gameObject);
+        }
     }
 }
