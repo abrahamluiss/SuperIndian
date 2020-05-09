@@ -6,6 +6,8 @@ public class PlayerController : MonoBehaviour
 {
     public float jumpForce = 7.0f;
     public float runningSpeed = 1.5f;
+    public float health = 100.0f;
+    public float costoBala = 20.0f;
     Rigidbody2D m_Rigidbody;
     public Animator m_Animator;
     public LayerMask groundLayer;//detectara la capa del suelo
@@ -54,6 +56,10 @@ public class PlayerController : MonoBehaviour
         else{
             return false;
         }
+    }
+
+    public void RecibirDisparoIndian(){
+        health -= costoBala;
     }
     
 }

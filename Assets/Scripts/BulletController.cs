@@ -15,7 +15,7 @@ public class BulletController : MonoBehaviour
         Destroy(gameObject, lifeTime);
         m_Rigidbody = GetComponent<Rigidbody2D>();
         stepVector = speed * direction.normalized;
-        Debug.Log("Sali bala");
+        //Debug.Log("Sali bala");
     }
 
     private void FixedUpdate() {
@@ -29,5 +29,12 @@ public class BulletController : MonoBehaviour
             if(ctr != null) ctr.RecibirDisparo();
             Destroy(gameObject);
         }
+        
+        if(other.gameObject.name.Equals("Indian")){
+            PlayerController ctr = other.gameObject.GetComponent<PlayerController>();
+            if(ctr != null) ctr.RecibirDisparoIndian();
+            Destroy(gameObject);
+        }
+        
     }
 }

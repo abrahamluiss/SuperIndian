@@ -6,7 +6,7 @@ public class ShootController : MonoBehaviour
 {
     Collider2D shootTo = null;
     public float probabilityShoot = 0.5f;
-    public GameObject bulletPrototype;
+    //public GameObject bulletPrototype;
     Enemy ctr;
 
     void start()
@@ -34,9 +34,6 @@ public class ShootController : MonoBehaviour
         }
     }
     void Shoot(){
-        GameObject bulletCopy = Instantiate(bulletPrototype);
-        bulletCopy.transform.position = new Vector3(transform.parent.position.x,transform.parent.position.y, -1.0f);
-        bulletCopy.GetComponent<BulletController>().direction = new Vector3(-transform.parent.localScale.x,0,0);
-        //Debug.Log("saliendo");
+        ctr.Disparar();
     }
 }

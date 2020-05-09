@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.UI;
 using UnityEngine;
 
 public class Enemy : MonoBehaviour
@@ -7,6 +8,7 @@ public class Enemy : MonoBehaviour
     public float enemyRunning = 1f;
     private Rigidbody2D m_Rigidbody;
     Animator m_Animator;
+    public GameObject bulletPrototype;
 
     private void Awake() {
         m_Rigidbody = GetComponent<Rigidbody2D>();
@@ -39,5 +41,14 @@ public class Enemy : MonoBehaviour
         var s = transform.localScale;
         s.x *= -1;
         transform.localScale = s;
+    }
+    public void Disparar(){
+        m_Animator.SetTrigger("apuntar");
+    }
+    public void EmitirBala(){
+        GameObject bulletCopy = Instantiate(bulletPrototype);
+        bulletCopy.transform.position = new Vector3(transform.position.x,transform.position.y, -1.0f);
+        bulletCopy.GetComponent<BulletController>().direction = new Vector3(-transform.localScale.x,0,0);
+        //Debug.Log("saliendo");
     }
 }
