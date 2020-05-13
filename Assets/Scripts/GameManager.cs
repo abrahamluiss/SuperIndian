@@ -20,12 +20,13 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        BackToMenu();
     }
 
     // Update is called once per frame
     void Update()
     {
+
          if(Input.GetButtonDown("Start") && this.currentGameState != GameState.inGame){
             StartGame();
         }
@@ -62,19 +63,19 @@ public class GameManager : MonoBehaviour
     void SetGameState(GameState newGameState){
         if(newGameState == GameState.menu){
             //hay que preparar la escena de unity para mostrar el menu
-            menuCanvas.enabled = true;
-            gameCanvas.enabled = false;
-            gameOverCanvas.enabled = false;
+            //menuCanvas.enabled = true;
+            //gameCanvas.enabled = false;
+            //gameOverCanvas.enabled = false;
         }else if(newGameState == GameState.inGame){
             //preparar la escena de unity para jugar
-            menuCanvas.enabled = false;
-            gameCanvas.enabled = true;
-            gameOverCanvas.enabled = false;
+            //menuCanvas.enabled = false;
+            //gameCanvas.enabled = true;
+            //gameOverCanvas.enabled = false;
         }else if(newGameState == GameState.gameOver){
             //hay que prepar la escena para el gameover
-            menuCanvas.enabled = false;
-            gameCanvas.enabled = false;
-            gameOverCanvas.enabled = true;
+            //menuCanvas.enabled = false;
+            //gameCanvas.enabled = false;
+            //gameOverCanvas.enabled = true;
         }
         //asiganamos el estado del juego actual al que no ha llegado por paramterpo
         this.currentGameState = newGameState;
