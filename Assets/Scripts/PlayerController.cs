@@ -12,17 +12,21 @@ public class PlayerController : MonoBehaviour
     Rigidbody2D m_Rigidbody;
     public Animator m_Animator;
     public LayerMask groundLayer;//detectara la capa del suelo
+
+    private Vector3 pocisionInicial;
     private void Awake() {
         compartirInstancia = this;//un jugador para todo el videojuego
         m_Rigidbody = GetComponent<Rigidbody2D>();
-
+        pocisionInicial = this.transform.position;//tomar el valor de spaw del heroe
     }
     // Start is called before the first frame update
-    void Start()
+    public void StartGame()
     {
         m_Animator.SetBool("isAlive",true);
         m_Animator.SetBool("isGrounded",true);
+        this.transform.position = pocisionInicial;//el heroe spawnea en el mismo lugar
     }
+
 
     // Update is called once per frame
     void Update()

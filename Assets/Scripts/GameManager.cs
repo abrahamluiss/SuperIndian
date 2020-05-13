@@ -39,7 +39,7 @@ public class GameManager : MonoBehaviour
     }
     public void StartGame(){
        SetGameState(GameState.inGame);
-
+        PlayerController.compartirInstancia.StartGame();
 
         this.collectedObjects = 0;
     }
