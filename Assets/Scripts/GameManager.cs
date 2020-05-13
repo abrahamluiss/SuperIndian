@@ -9,13 +9,13 @@ public enum GameState{//estados del juego
 }
 public class GameManager : MonoBehaviour
 {
-    public static GameManager sharedInstance;//la propia clase se creera asi misma
+    public static GameManager compartirInstancia;//la propia clase se creera asi misma
     public GameState currentGameState = GameState.menu;//variable para saber en q estado del juego estamos 
     //al inicio quermos q empieze en el menu principal
     public Canvas menuCanvas, gameCanvas, gameOverCanvas;
     public int collectedObjects = 0;
     private void Awake() {
-        sharedInstance = this;
+        compartirInstancia = this;
     }
     // Start is called before the first frame update
     void Start()

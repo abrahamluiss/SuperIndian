@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    public static PlayerController compartirInstancia;
     public float jumpForce = 7.0f;
     public float runningSpeed = 1.5f;
     public float health = 100.0f;
@@ -12,6 +13,7 @@ public class PlayerController : MonoBehaviour
     public Animator m_Animator;
     public LayerMask groundLayer;//detectara la capa del suelo
     private void Awake() {
+        compartirInstancia = this;//un jugador para todo el videojuego
         m_Rigidbody = GetComponent<Rigidbody2D>();
 
     }
@@ -25,7 +27,7 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(GameManager.sharedInstance.currentGameState == GameState.inGame){ //solo debemos jugar si esta en modo inGame
+        if(GameManager.compartirInstancia.currentGameState == GameState.inGame){ //solo debemos jugar si esta en modo inGame
             if(Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0)){
                 Jump();
             }
@@ -35,7 +37,7 @@ public class PlayerController : MonoBehaviour
 
     void FixedUpdate()
     {
-        if(GameManager.sharedInstance.currentGameState == GameState.inGame){ //solo debemos jugar si esta en modo inGame
+        if(GameManager.compartirInstancia.currentGameState == GameState.inGame){ //solo debemos jugar si esta en modo inGame
             if(m_Rigidbody.velocity.x < runningSpeed){
                 m_Rigidbody.velocity = new Vector2(runningSpeed, m_Rigidbody.velocity.y);
             }
@@ -66,6 +68,10 @@ public class PlayerController : MonoBehaviour
         health -= costoBala;
     }
     
+    public void Muerte(){
+        GameManager.compartirInstancia.GameOver();//cambio de estado 
+        this.m_Animator.SetBool("isAlive",false);
+    }
 }
     
 
