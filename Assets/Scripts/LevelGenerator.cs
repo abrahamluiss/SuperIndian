@@ -24,12 +24,16 @@ public class LevelGenerator : MonoBehaviour
 
     public void AgregarLevelBloque(){
         int pocisionAleatoria = Random.Range(0,todosLosLevelBlock.Count);
-        LevelBlock actualBloque = (LevelBlock)Instantiate(todosLosLevelBlock[pocisionAleatoria]);
-        actualBloque.transform.SetParent(this.transform, false);//añade como hijo de la jerarquia
+        LevelBlock actualBloque; //= (LevelBlock)Instantiate(todosLosLevelBlock[pocisionAleatoria]);
+        //actualBloque.transform.SetParent(this.transform, false);//añade como hijo de la jerarquia
         Vector3 aparecerEnPocision = Vector3.zero;
         if(actualBloques.Count ==0){
+            actualBloque = (LevelBlock) Instantiate(primerBloque);
+            actualBloque.transform.SetParent(this.transform, false);
             aparecerEnPocision = puntoInicioLevel.position;
         }else{
+            actualBloque = (LevelBlock)Instantiate(todosLosLevelBlock[pocisionAleatoria]);
+            actualBloque.transform.SetParent(this.transform, false);//añade como hijo de la jerarquia
             aparecerEnPocision = actualBloques[actualBloques.Count-1].puntoSalida.position;
         }
 
