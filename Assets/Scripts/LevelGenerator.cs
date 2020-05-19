@@ -5,6 +5,7 @@ using UnityEngine;
 public class LevelGenerator : MonoBehaviour
 {
     public static LevelGenerator compartirInstancia;
+    public LevelBlock primerBloque;
     public List<LevelBlock> todosLosLevelBlock = new List<LevelBlock>();//los lvls en el prefap
     public Transform puntoInicioLevel;//saber donde se generara
     public List<LevelBlock> actualBloques = new List<LevelBlock>();//los que hay actualmente en la escena

@@ -39,8 +39,17 @@ public class GameManager : MonoBehaviour
     }
     public void StartGame(){
        SetGameState(GameState.inGame);
-        PlayerController.compartirInstancia.StartGame();
 
+        GameObject camara = GameObject.FindGameObjectWithTag("MainCamera");
+        CameraFollow cameraFollow = camara.GetComponent<CameraFollow>();
+        cameraFollow.ReiniciarPosicionCamara();
+
+        if(PlayerController.compartirInstancia.transform.position.x > 10){//si el player se movio
+            LevelGenerator.compartirInstancia.RemoverTodosBloques();
+            LevelGenerator.compartirInstancia.GenerarBloquesIniciales();
+        }
+
+        PlayerController.compartirInstancia.StartGame();
         this.collectedObjects = 0;
     }
     public void GameOver(){

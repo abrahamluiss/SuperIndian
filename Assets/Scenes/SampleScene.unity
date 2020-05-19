@@ -1131,6 +1131,7 @@ GameObject:
   - component: {fileID: 519420032}
   - component: {fileID: 519420031}
   - component: {fileID: 519420029}
+  - component: {fileID: 519420030}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -1146,6 +1147,22 @@ AudioListener:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_Enabled: 1
+--- !u!114 &519420030
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 519420028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c6390673367799e48bc1f67ca77095d2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objetivo: {fileID: 177570774}
+  seguirDeLejos: {x: 0.2, y: -1, z: -10}
+  dampTime: 0.3
+  velocidad: {x: 0, y: 0, z: 0}
 --- !u!20 &519420031
 Camera:
   m_ObjectHideFlags: 0
@@ -6957,10 +6974,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73ca33c7817372143ad68358193ee5ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  primerBloque: {fileID: 0}
   todosLosLevelBlock:
   - {fileID: 2468593392444800283, guid: a8975c617fac1f24fa7c0a6e7050d61a, type: 3}
-  - {fileID: 114371249135283188, guid: 132ee6ba8ba23b74c8fde1f773f3cdc1, type: 3}
-  - {fileID: 114166495602709292, guid: 7a8a5596bd017624f8a086742cb1fce5, type: 3}
   puntoInicioLevel: {fileID: 1452345757}
   actualBloques: []
 --- !u!4 &1216503207
@@ -8427,12 +8443,22 @@ PrefabInstance:
     - target: {fileID: 7451491352178981697, guid: 92c40f7f68b15ee429ed745e540c7008,
         type: 3}
       propertyPath: m_UsedByEffector
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7451491352178981697, guid: 92c40f7f68b15ee429ed745e540c7008,
+        type: 3}
+      propertyPath: m_IsTrigger
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7451491352178981698, guid: 92c40f7f68b15ee429ed745e540c7008,
         type: 3}
       propertyPath: m_Mass
-      value: 1.0720229
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7451491352178981698, guid: 92c40f7f68b15ee429ed745e540c7008,
+        type: 3}
+      propertyPath: m_UseAutoMass
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7451491352178981699, guid: 92c40f7f68b15ee429ed745e540c7008,
         type: 3}
@@ -8494,6 +8520,11 @@ PrefabInstance:
       propertyPath: m_Animator
       value: 
       objectReference: {fileID: 161232237}
+    - target: {fileID: 7451491352178981700, guid: 92c40f7f68b15ee429ed745e540c7008,
+        type: 3}
+      propertyPath: jumpForce
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 7451491352178981701, guid: 92c40f7f68b15ee429ed745e540c7008,
         type: 3}
       propertyPath: m_Name
