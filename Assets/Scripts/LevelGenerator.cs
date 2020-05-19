@@ -16,9 +16,7 @@ public class LevelGenerator : MonoBehaviour
  
     void Start()
     {
-        AgregarLevelBloque();
-        AgregarLevelBloque();
-        AgregarLevelBloque();
+        GenerarBloquesIniciales();
 
     }
   /// <param name="actualBloque">bloque que se genero</param>
@@ -41,13 +39,20 @@ public class LevelGenerator : MonoBehaviour
         actualBloques.Add(actualBloque);
     }
     public void RemoverLevelBloqueMasViejo(){
-
+        //Debug.Log("Se destruira un bloque");
+        LevelBlock bloqueMasViejo = actualBloques[0];
+        actualBloques.Remove(bloqueMasViejo);
+        Destroy(bloqueMasViejo.gameObject);//pulling de un objeto -> otra tecnica
     }
     public void RemoverTodosBloques(){
-
+        while(actualBloques.Count>0){
+            RemoverLevelBloqueMasViejo();
+        }
     }
     public void GenerarBloquesIniciales(){
-
+        for(int i = 0; i < 2; i++){
+            AgregarLevelBloque();
+        }
     }
 
 }

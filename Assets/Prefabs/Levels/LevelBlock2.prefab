@@ -2013,6 +2013,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8048869906302126743}
   - component: {fileID: 5495676058752624918}
+  - component: {fileID: 7738777855438781717}
   m_Layer: 0
   m_Name: ExitZone
   m_TagString: Untagged
@@ -2028,7 +2029,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6909028162384980236}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 60.2, y: 12.7, z: 0.60871017}
+  m_LocalPosition: {x: 58.2, y: 19.3, z: 0.60871017}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 6894013651179825174}
@@ -2060,6 +2061,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 39.65}
   m_EdgeRadius: 0
+--- !u!114 &7738777855438781717
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6909028162384980236}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 89de1caacea983e4294c4c16c2e6d1f3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6944363781258840213
 GameObject:
   m_ObjectHideFlags: 0
