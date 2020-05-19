@@ -18,6 +18,8 @@ public class LevelGenerator : MonoBehaviour
     {
         AgregarLevelBloque();
         AgregarLevelBloque();
+        AgregarLevelBloque();
+
     }
   /// <param name="actualBloque">bloque que se genero</param>
 
@@ -31,7 +33,11 @@ public class LevelGenerator : MonoBehaviour
         }else{
             aparecerEnPocision = actualBloques[actualBloques.Count-1].puntoSalida.position;
         }
-        actualBloque.transform.position = aparecerEnPocision;
+
+        Vector3 correccion = new Vector3(aparecerEnPocision.x - actualBloque.puntoEntrada.position.x, 
+                                        aparecerEnPocision.y-actualBloque.puntoEntrada.position.y,0);
+
+        actualBloque.transform.position = correccion;//nueva pocision q se colocara 
         actualBloques.Add(actualBloque);
     }
     public void RemoverLevelBloqueMasViejo(){
