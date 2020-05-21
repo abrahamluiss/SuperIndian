@@ -13,7 +13,7 @@ public class GameManager : MonoBehaviour
     public GameState currentGameState = GameState.menu;//variable para saber en q estado del juego estamos 
     //al inicio quermos q empieze en el menu principal
     public Canvas menuCanvas, gameCanvas, gameOverCanvas;
-    public int collectedObjects = 0;
+    public int objetosColeccionados = 0;
     private void Awake() {
         compartirInstancia = this;
     }
@@ -50,7 +50,7 @@ public class GameManager : MonoBehaviour
         }
 
         PlayerController.compartirInstancia.StartGame();
-        this.collectedObjects = 0;
+        this.objetosColeccionados = 0;
     }
     public void GameOver(){
         SetGameState(GameState.gameOver);
@@ -91,8 +91,8 @@ public class GameManager : MonoBehaviour
         this.currentGameState = newGameState;
     }
 
-    public void CollectObject(int objectValue){
-        this.collectedObjects += objectValue;
-        Debug.Log("Recogiste; "+this.collectedObjects);
+    public void ColeccionarObjeto(int valorObjeto){
+        this.objetosColeccionados += valorObjeto;
+        Debug.Log("Recogiste: "+this.objetosColeccionados);
     }
 }

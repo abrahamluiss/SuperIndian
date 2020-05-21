@@ -592,10 +592,10 @@ PlayerSettings:
   facebookXfbml: 0
   facebookFrictionlessRequests: 1
   apiCompatibilityLevel: 6
-  cloudProjectId: 
+  cloudProjectId: 3dd448bf-0db2-48b8-a488-ec5aea511896
   framebufferDepthMemorylessMode: 0
-  projectName: 
-  organizationId: 
+  projectName: Saldana_s2
+  organizationId: unity_75453128
   cloudEnabled: 0
   enableNativePlatformBackendsForNewInputSystem: 0
   disableOldInputManagerSupport: 0
