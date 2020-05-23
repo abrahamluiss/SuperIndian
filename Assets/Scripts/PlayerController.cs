@@ -28,7 +28,7 @@ public class PlayerController : MonoBehaviour
         m_Animator.SetBool("isGrounded",true);
         this.transform.position = pocisionInicial;//el heroe spawnea en el mismo lugar
 
-        this.puntosVida = 1000;
+        this.puntosVida = 100;
         this.puntosMana = 10;
 
         StartCoroutine("CansarPlayer");
@@ -36,7 +36,7 @@ public class PlayerController : MonoBehaviour
     IEnumerator CansarPlayer(){//corutina
         while(this.puntosVida > 0){
             this.puntosVida--;
-            yield return new WaitForSeconds(2.0f);
+            yield return new WaitForSeconds(1.0f);
         }
         yield return null;
     }
@@ -58,7 +58,7 @@ public class PlayerController : MonoBehaviour
     void FixedUpdate()
     {
         if(GameManager.compartirInstancia.currentGameState == GameState.inGame){ //solo debemos jugar si esta en modo inGame
-            float velocidadActual = (runningSpeed -1.5f )* this.puntosVida / 100.0f;
+            float velocidadActual = (runningSpeed -0.5f )* this.puntosVida / 100.0f;
             if(m_Rigidbody.velocity.x < velocidadActual){
 
                 m_Rigidbody.velocity = new Vector2(velocidadActual, m_Rigidbody.velocity.y);
@@ -111,16 +111,16 @@ public class PlayerController : MonoBehaviour
         return distanciaViaje;//this.transforma.positionx - inciopocision.x final menos inicial
     }
 
-    public void ColeccionableVida( int puntos){
-        this.puntosVida += puntos;
-        if(this.puntosVida >= 1050){
-            this.puntosVida =1000;
+    public void ColeccionableVida( int puntosVid){
+        this.puntosVida += puntosVid;
+        if(this.puntosVida >= 150){
+            this.puntosVida =100;
         }
     }
-    public void ColeccionableMana(int puntos){
-        this.puntosMana += puntos;
-        if(this.puntosVida >= 25){
-            this.puntosVida = 25;
+    public void ColeccionableMana(int puntosMan){
+        this.puntosMana += puntosMan;
+        if(this.puntosMana >= 25){
+            this.puntosMana = 25;
         }
     }
 
@@ -129,6 +129,15 @@ public class PlayerController : MonoBehaviour
     }
     public int GetMana(){
         return this.puntosMana;
+    }
+
+    private void OnTriggerEnter2D(Collider2D otherCollider) {
+        if(otherCollider.tag == "Enemy"){
+            this.puntosVida -= 15;
+        }
+        if(GameManager.compartirInstancia.currentGameState == GameState.inGame && this.puntosVida <= 0){
+            Muerte();
+        }
     }
 }
     

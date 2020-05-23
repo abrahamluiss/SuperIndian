@@ -10,9 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 6815207345809497867}
   - component: {fileID: 6815207345809497864}
-  - component: {fileID: 6815207345809497865}
   - component: {fileID: 1091968779}
   - component: {fileID: 1091968780}
+  - component: {fileID: 1062730698826331892}
   m_Layer: 0
   m_Name: tree
   m_TagString: Untagged
@@ -82,42 +82,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!68 &6815207345809497865
-EdgeCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6815207345809497862}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_EdgeRadius: 0
-  m_Points:
-  - {x: 0.06211313, y: -0.57230705}
-  - {x: 0.06660732, y: -0.38083076}
-  - {x: -0.014543533, y: -0.16391587}
-  - {x: -0.24961433, y: -0.05302453}
-  - {x: -0.50154656, y: -0.19458136}
-  - {x: -0.60358185, y: 0.022072475}
-  - {x: -0.47214264, y: 0.3275075}
-  - {x: -0.26355314, y: 0.365409}
-  - {x: -0.09600004, y: 0.31543854}
-  - {x: 0.087339245, y: 0.40450844}
-  - {x: 0.124334976, y: 0.528347}
-  - {x: 0.24928682, y: 0.5409674}
-  - {x: 0.404497, y: 0.43101633}
-  - {x: 0.546337, y: 0.27863628}
-  - {x: 0.5827233, y: 0.14756298}
-  - {x: 0.56880236, y: 0.078005634}
-  - {x: 0.5220885, y: 0.026100796}
-  - {x: 0.33855042, y: 0.061651707}
-  - {x: 0.18943739, y: -0.16847858}
-  - {x: 0.17877087, y: -0.5778882}
 --- !u!95 &1091968779
 Animator:
   serializedVersion: 3
@@ -151,3 +115,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   numGolpesParaCaer: 3
   numBalasParaCaer: 3
+--- !u!70 &1062730698826331892
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6815207345809497862}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 6200000, guid: 6f574d74dccd49646ae0ff73b922237b, type: 2}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.12, y: -0.03}
+  m_Size: {x: 0.25, y: 0.7}
+  m_Direction: 0

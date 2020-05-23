@@ -130,5 +130,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tipo: 0
-  valorMoneda: 10
+  valorMoneda: 20
   sonidoColeccionable: {fileID: 0}
