@@ -75,6 +75,13 @@ public class PlayerController : MonoBehaviour
     public void Muerte(){
         GameManager.compartirInstancia.GameOver();//cambio de estado 
         this.m_Animator.SetBool("isAlive",false);
+
+        
+    }
+
+    public float GetDistance(){
+        float distanciaViaje = Vector2.Distance(new Vector2(pocisionInicial.x,0), new Vector2(this.transform.position.x,0));
+        return distanciaViaje;//this.transforma.positionx - inciopocision.x final menos inicial
     }
 }
     
