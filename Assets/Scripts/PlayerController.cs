@@ -28,10 +28,18 @@ public class PlayerController : MonoBehaviour
         m_Animator.SetBool("isGrounded",true);
         this.transform.position = pocisionInicial;//el heroe spawnea en el mismo lugar
 
-        this.puntosVida = 100;
+        this.puntosVida = 1000;
         this.puntosMana = 10;
-    }
 
+        StartCoroutine("CansarPlayer");
+    }
+    IEnumerator CansarPlayer(){//corutina
+        while(this.puntosVida > 0){
+            this.puntosVida--;
+            yield return new WaitForSeconds(2.0f);
+        }
+        yield return null;
+    }
 
     // Update is called once per frame
     void Update()
@@ -50,7 +58,7 @@ public class PlayerController : MonoBehaviour
     void FixedUpdate()
     {
         if(GameManager.compartirInstancia.currentGameState == GameState.inGame){ //solo debemos jugar si esta en modo inGame
-            float velocidadActual = (runningSpeed - 0.5f )* this.puntosVida / 100.0f;
+            float velocidadActual = (runningSpeed -1.5f )* this.puntosVida / 100.0f;
             if(m_Rigidbody.velocity.x < velocidadActual){
 
                 m_Rigidbody.velocity = new Vector2(velocidadActual, m_Rigidbody.velocity.y);
@@ -105,8 +113,8 @@ public class PlayerController : MonoBehaviour
 
     public void ColeccionableVida( int puntos){
         this.puntosVida += puntos;
-        if(this.puntosVida >= 150){
-            this.puntosVida =150;
+        if(this.puntosVida >= 1050){
+            this.puntosVida =1000;
         }
     }
     public void ColeccionableMana(int puntos){
@@ -114,6 +122,13 @@ public class PlayerController : MonoBehaviour
         if(this.puntosVida >= 25){
             this.puntosVida = 25;
         }
+    }
+
+    public int GetVida(){
+        return this.puntosVida;
+    }
+    public int GetMana(){
+        return this.puntosMana;
     }
 }
     
