@@ -6,6 +6,7 @@ TagManager:
   tags:
   - tree
   - Collectable
+  - Enemy
   layers:
   - Default
   - TransparentFX
@@ -19,7 +20,7 @@ TagManager:
   - Bullet
   - Enemy
   - HaloOrco
-  - 
+  - ExitZon
   - 
   - 
   - 

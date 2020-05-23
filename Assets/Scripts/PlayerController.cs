@@ -16,10 +16,15 @@ public class PlayerController : MonoBehaviour
     private Vector3 pocisionInicial;
 
     private int puntosVida, puntosMana;
+
+    AudioSource aSource;
+    public AudioClip saltar;
+    public AudioClip morir;
     private void Awake() {
         compartirInstancia = this;//un jugador para todo el videojuego
         m_Rigidbody = GetComponent<Rigidbody2D>();
         pocisionInicial = this.transform.position;//tomar el valor de spaw del heroe
+        aSource = GetComponent<AudioSource>();
     }
     // Start is called before the first frame update
     public void StartGame()
@@ -30,8 +35,8 @@ public class PlayerController : MonoBehaviour
 
         this.puntosVida = 100;
         this.puntosMana = 10;
-
-        StartCoroutine("CansarPlayer");
+        aSource.Stop();
+       // StartCoroutine("CansarPlayer");
     }
     IEnumerator CansarPlayer(){//corutina
         while(this.puntosVida > 0){
@@ -71,12 +76,14 @@ public class PlayerController : MonoBehaviour
                 puntosMana -= 3;
             //F =m*a
                 m_Rigidbody.AddForce(Vector2.up * jumpForce * 1.3f, ForceMode2D.Impulse);//fuerza vertical hacia arriba por JumpForce, las fierzas son en modo impulso
-        
+                aSource.PlayOneShot(saltar);
             }else{
                  m_Rigidbody.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);//fuerza vertical hacia arriba por JumpForce, las fierzas son en modo impulso
+                 aSource.PlayOneShot(saltar);
             }
 
         }
+
 
     }
 
@@ -85,6 +92,7 @@ public class PlayerController : MonoBehaviour
     bool IsTouchingTheGround(){
         if(Physics2D.Raycast(this.transform.position, Vector2.down, 0.7f,groundLayer)){
             return true;
+
         }
         else{
             return false;
@@ -104,6 +112,7 @@ public class PlayerController : MonoBehaviour
         if(scoreMaxActual<this.GetDistance()){
             PlayerPrefs.SetFloat("maxscore",this.GetDistance());
         }
+        aSource.PlayOneShot(morir, 0.2f);
     }
 
     public float GetDistance(){
@@ -137,6 +146,7 @@ public class PlayerController : MonoBehaviour
         }
         if(GameManager.compartirInstancia.currentGameState == GameState.inGame && this.puntosVida <= 0){
             Muerte();
+            
         }
     }
 }

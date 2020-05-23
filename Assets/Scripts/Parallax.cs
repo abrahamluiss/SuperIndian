@@ -13,8 +13,8 @@ public class Parallax : MonoBehaviour
         this.m_Rigidbody.velocity = new Vector2(velocidad, 0);
         float parentPosition = this.transform.parent.transform.position.x;
         Debug.Log(parentPosition);
-        if(this.transform.position.x - parentPosition >= 19.76f){//si se ha desplazado mas alla dela camara
-            this.transform.position = new Vector3(parentPosition - 18.55f, this.transform.position.y, this.transform.position.z);//coordinadas correlativas
+        if(this.transform.position.x - parentPosition >= 22.20f){//si se ha desplazado mas alla dela camara
+            this.transform.position = new Vector3(parentPosition - 22.0f, this.transform.position.y, this.transform.position.z);//coordinadas correlativas
         }
     }
 }

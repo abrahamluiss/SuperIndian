@@ -35,7 +35,7 @@ public class CameraFollow : MonoBehaviour
         //donde quiero ir menos donde esta ahora
         Vector3 delta = objetivo.position - GetComponent<Camera>().ViewportToWorldPoint(new Vector3(seguirDeLejos.x, seguirDeLejos.y, punto.z));//cuanto tiene q moverse la camara para q el personaje siga en el centro
         Vector3 destino = punto + delta;
-        destino = new Vector3(objetivo.position.x, seguirDeLejos.y, seguirDeLejos.z);//correción para q la camara no salte con el personaje
+        destino = new Vector3(objetivo.position.x, objetivo.position.y+2.3f, seguirDeLejos.z);//correción para q la camara no salte con el personaje
         this.transform.position = Vector3.SmoothDamp(this.transform.position, destino, ref velocidad, dampTime);
     }
 }
