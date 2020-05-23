@@ -20,6 +20,10 @@ public class ViewInGame : MonoBehaviour
         if(GameManager.compartirInstancia.currentGameState == GameState.inGame){
             float distanciaRecorrida = PlayerController.compartirInstancia.GetDistance();
             this.scoreLabel.text = "Score\n" + distanciaRecorrida.ToString("f0");
+
+            float maxscore = PlayerPrefs.GetFloat("maxscore", 0);
+            this.maxScoreLabel.text = "MaxScores\n"+ maxscore.ToString("f0");
         }
+
     }
 }

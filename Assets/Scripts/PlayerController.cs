@@ -76,7 +76,10 @@ public class PlayerController : MonoBehaviour
         GameManager.compartirInstancia.GameOver();//cambio de estado 
         this.m_Animator.SetBool("isAlive",false);
 
-        
+        float scoreMaxActual = PlayerPrefs.GetFloat("maxscore",0);
+        if(scoreMaxActual<this.GetDistance()){
+            PlayerPrefs.SetFloat("maxscore",this.GetDistance());
+        }
     }
 
     public float GetDistance(){
