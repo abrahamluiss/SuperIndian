@@ -14,6 +14,8 @@ public class PlayerController : MonoBehaviour
     public LayerMask groundLayer;//detectara la capa del suelo
 
     private Vector3 pocisionInicial;
+
+    private int puntosVida, puntosMana;
     private void Awake() {
         compartirInstancia = this;//un jugador para todo el videojuego
         m_Rigidbody = GetComponent<Rigidbody2D>();
@@ -25,6 +27,9 @@ public class PlayerController : MonoBehaviour
         m_Animator.SetBool("isAlive",true);
         m_Animator.SetBool("isGrounded",true);
         this.transform.position = pocisionInicial;//el heroe spawnea en el mismo lugar
+
+        this.puntosVida = 100;
+        this.puntosMana = 10;
     }
 
 
@@ -33,7 +38,10 @@ public class PlayerController : MonoBehaviour
     {
         if(GameManager.compartirInstancia.currentGameState == GameState.inGame){ //solo debemos jugar si esta en modo inGame
             if(Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0)){
-                Jump();
+                Jump(false);
+            }
+            if(Input.GetMouseButtonDown(1)){
+                Jump(true);
             }
             m_Animator.SetBool("isGrounded", IsTouchingTheGround());
         }
@@ -42,19 +50,27 @@ public class PlayerController : MonoBehaviour
     void FixedUpdate()
     {
         if(GameManager.compartirInstancia.currentGameState == GameState.inGame){ //solo debemos jugar si esta en modo inGame
-            if(m_Rigidbody.velocity.x < runningSpeed){
-                m_Rigidbody.velocity = new Vector2(runningSpeed, m_Rigidbody.velocity.y);
+            float velocidadActual = (runningSpeed - 0.5f )* this.puntosVida / 100.0f;
+            if(m_Rigidbody.velocity.x < velocidadActual){
+
+                m_Rigidbody.velocity = new Vector2(velocidadActual, m_Rigidbody.velocity.y);
             }
         }
     }
-    void Jump(){
+    void Jump(bool esSuperSalto){
         if(IsTouchingTheGround()){
+            if(esSuperSalto && this.puntosMana > 3){
+                puntosMana -= 3;
             //F =m*a
-            m_Rigidbody.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);//fuerza vertical hacia arriba por JumpForce, las fierzas son en modo impulso
+                m_Rigidbody.AddForce(Vector2.up * jumpForce * 1.3f, ForceMode2D.Impulse);//fuerza vertical hacia arriba por JumpForce, las fierzas son en modo impulso
         
-        }
+            }else{
+                 m_Rigidbody.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);//fuerza vertical hacia arriba por JumpForce, las fierzas son en modo impulso
+            }
 
         }
+
+    }
 
 
     /// method <IsTouchingTheGround> -> devolvera true si esta tocando el suelo y false si no se toca
@@ -85,6 +101,19 @@ public class PlayerController : MonoBehaviour
     public float GetDistance(){
         float distanciaViaje = Vector2.Distance(new Vector2(pocisionInicial.x,0), new Vector2(this.transform.position.x,0));
         return distanciaViaje;//this.transforma.positionx - inciopocision.x final menos inicial
+    }
+
+    public void ColeccionableVida( int puntos){
+        this.puntosVida += puntos;
+        if(this.puntosVida >= 150){
+            this.puntosVida =150;
+        }
+    }
+    public void ColeccionableMana(int puntos){
+        this.puntosMana += puntos;
+        if(this.puntosVida >= 25){
+            this.puntosVida = 25;
+        }
     }
 }
     

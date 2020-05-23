@@ -2,8 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum TiposColeccionables{
+    pocionVida,
+    pocionMana,
+    money
+}
 public class Collectable : MonoBehaviour
 {
+    public TiposColeccionables tipo = TiposColeccionables.money;
     bool esRecogida = false;
     public int valorMoneda =0;
     public AudioClip sonidoColeccionable;
@@ -21,11 +27,27 @@ public class Collectable : MonoBehaviour
     void Recoger(){//recolectar la moneda
         esRecogida = true;
         Ocultar();
-        GameManager.compartirInstancia.ColeccionarObjeto(valorMoneda);
-        AudioSource audio = GetComponent<AudioSource>();
-        if(audio != null && this.sonidoColeccionable != null){
-            audio.PlayOneShot(this.sonidoColeccionable);
+
+        switch(this.tipo){
+            case TiposColeccionables.money:
+                GameManager.compartirInstancia.ColeccionarObjeto(valorMoneda);
+                break;
+            case TiposColeccionables.pocionVida:
+            //dar vida
+                PlayerController.compartirInstancia.ColeccionableVida(valorMoneda);
+                break;
+            case TiposColeccionables.pocionMana:
+            //mana
+            PlayerController.compartirInstancia.ColeccionableMana(valorMoneda);
+                break;
         }
+        AudioSource audio = GetComponent<AudioSource>();
+            if(audio != null && this.sonidoColeccionable != null){
+                audio.PlayOneShot(this.sonidoColeccionable);
+
+        }
+
+
     }
 
     private void OnTriggerEnter2D(Collider2D otherollider) {

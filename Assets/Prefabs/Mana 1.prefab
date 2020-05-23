@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 7497090530623749432}
   - component: {fileID: 7497090530623749433}
   - component: {fileID: 2567929441863066661}
+  - component: {fileID: 2998123789796733250}
   m_Layer: 0
   m_Name: Mana 1
   m_TagString: Untagged
@@ -116,3 +117,18 @@ CircleCollider2D:
   m_Offset: {x: 0, y: -0.39}
   serializedVersion: 2
   m_Radius: 0.35655862
+--- !u!114 &2998123789796733250
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7497090530623749434}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 39720dc165b7e734293a2020f3a7e0f5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tipo: 1
+  valorMoneda: 12
+  sonidoColeccionable: {fileID: 0}
