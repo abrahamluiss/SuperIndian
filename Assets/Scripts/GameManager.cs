@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Analytics;
 
 public enum GameState{//estados del juego
     menu,
@@ -9,6 +10,7 @@ public enum GameState{//estados del juego
 }
 public class GameManager : MonoBehaviour
 {
+    float version = 1.0f;
     public static GameManager compartirInstancia;//la propia clase se creera asi misma
     public GameState currentGameState = GameState.menu;//variable para saber en q estado del juego estamos 
     //al inicio quermos q empieze en el menu principal
@@ -20,6 +22,7 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        RegistrarInicio();
         BackToMenu();
     }
 
@@ -53,7 +56,9 @@ public class GameManager : MonoBehaviour
         this.objetosColeccionados = 0;
     }
     public void GameOver(){
+
         SetGameState(GameState.gameOver);
+                RegistrarFin();
     }
     //metodo para volver al menu principal cuando el usuario lo quiera hacer
     public void BackToMenu(){
@@ -94,5 +99,19 @@ public class GameManager : MonoBehaviour
     public void ColeccionarObjeto(int valorObjeto){
         this.objetosColeccionados += valorObjeto;
         Debug.Log("Recogiste: "+this.objetosColeccionados);
+    }
+
+    public void RegistrarInicio(){
+        Debug.Log("Registro inicio");
+        Analytics.CustomEvent("StartGame", new Dictionary<string, object>{});
+    }
+    public void RegistrarFin(){
+        Debug.Log("Registro fin");
+        float secsJuego = Time.time;
+        //int vidaPlayer = GameObject.Find("Player").GetComponent<PlayerController>().GetVida();
+        //Analytics.CustomEvent("GameOver", new Dictionary<string,object>{
+         //   {"murio", PlayerController.compartirInstancia.morir},
+//{ "version", version}
+        //});
     }
 }

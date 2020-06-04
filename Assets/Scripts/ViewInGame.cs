@@ -13,7 +13,7 @@ public class ViewInGame : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(GameManager.compartirInstancia.currentGameState == GameState.inGame || GameManager.compartirInstancia.currentGameState==GameState.gameOver){
+        if(GameManager.compartirInstancia.currentGameState == GameState.inGame || GameManager.compartirInstancia.currentGameState ==GameState.gameOver){
             int objetosActuales = GameManager.compartirInstancia.objetosColeccionados;
             this.ColeccionableLabel.text = objetosActuales.ToString();
         }
